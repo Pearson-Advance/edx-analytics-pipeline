@@ -161,4 +161,5 @@ class S3HdfsTarget(HdfsTarget):
             safe_path = self.path.replace('s3n://', 's3://')
             if not hasattr(self, 's3_client'):
                 self.s3_client = ScalableS3Client()
-            return AtomicS3File(safe_path, self.s3_client, policy=DEFAULT_KEY_ACCESS_POLICY)
+            headers = {"Host": self.s3_client._get_s3_config('host')}
+            return AtomicS3File(safe_path, self.s3_client, policy=DEFAULT_KEY_ACCESS_POLICY, headers=headers)
