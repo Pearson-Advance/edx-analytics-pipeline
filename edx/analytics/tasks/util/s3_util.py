@@ -136,7 +136,8 @@ class ScalableS3Client(S3Client):
             aws_secret_access_key = self._get_s3_config('aws_secret_access_key')
         if 'host' not in kwargs:
             kwargs['host'] = self._get_s3_config('host') or 's3.amazonaws.com'
-
+        # TODO: Burn host until found a better way to do it.
+        kwargs['host'] = 's3-eu-west-1.amazonaws.com'
         super(ScalableS3Client, self).__init__(aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, **kwargs)
 
 
