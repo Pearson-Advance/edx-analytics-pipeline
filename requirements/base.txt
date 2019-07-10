@@ -28,5 +28,4 @@ six==1.10.0
 # Already present, but not affected by the above, is setuptools and wheel.
 # Pin these here as well.
 
-setuptools==36.4.0
 wheel==0.30.0
