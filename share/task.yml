@@ -13,6 +13,8 @@
       - CentOS
       - Red Hat Enterprise Linux
       - Amazon
+    # pip version installed in https://github.com/eduNEXT/edx-analytics-pipeline/blob/open-release/ironwood.ednx/requirements/pip.txt#L1
+    pip_version: "9.0.1"
   roles:
     - role: luigi
       when: write_luigi_config|bool
@@ -150,7 +152,7 @@
 
     - name: update pip
       command: >
-        {{ working_venv_dir }}/bin/pip install -U pip
+        {{ working_venv_dir }}/bin/pip install -U pip=={{ pip_version }}
 
     - name: virtualenv initialized on Debian
       shell: >
